@@ -2,7 +2,7 @@ import numpy as np
 import pytest
 
 from life.metrics import damage_spread, detect_cycle, flip, hamming
-from life.patterns import BLINKER, BLOCK, place
+from life.patterns import BLINKER, BLOCK, GLIDER, place
 from life.topology import Lattice
 
 
@@ -73,3 +73,17 @@ def test_damage_matches_two_separate_runs():
 def test_damage_rejects_negative_steps():
     with pytest.raises(ValueError):
         damage_spread(np.zeros((3, 3), dtype=bool), (0, 0), -1)
+
+
+@pytest.mark.parametrize("size", [8, 12, 16])
+def test_lone_glider_on_torus_has_period_4l(size):
+    # A glider moves one cell diagonally every 4 generations, so it returns after 4L.
+    cycle = detect_cycle(place(GLIDER, (size, size), at=(1, 1)))
+    assert (cycle.transient, cycle.period) == (0, 4 * size)
+
+
+def test_grid_period_is_lcm_of_object_periods():
+    # A blinker (period 2) next to a glider (period 4L = 64): the whole grid has period 64.
+    state = place(GLIDER, (16, 16), at=(1, 1)) | place(BLINKER, (16, 16), at=(10, 2))
+    first = detect_cycle(state)
+    assert first.period == 64
