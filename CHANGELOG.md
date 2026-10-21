@@ -1,5 +1,15 @@
 # Changelog
 
+## v2.0-alpha.3: experiment 2, phase transition and criticality
+
+### Added
+- `life.avalanches`: open boundaries, settling, avalanche size and duration against an undisturbed copy
+- `life.stats`: discrete power-law fit (maximum likelihood, KS cut-off, likelihood-ratio test against an exponential)
+- Notebook `02_criticality`: initial-density sweep, survival on grids from 32 to 256, avalanches on grids from 32 to 256 and on a torus
+- Write-up `docs/experiments/02-criticality.md` with five puzzles; ADR 0003
+- Methods, concepts and references for power laws, self-organized criticality, finite-size effects and absorbing states
+- Raw data in `data/exp02/`; figures
+
 ## v2.0-alpha.2: experiment 3, topology rewiring
 
 ### Added

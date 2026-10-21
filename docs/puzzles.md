@@ -18,3 +18,8 @@ Things the data did that were not obvious in advance. Each puzzle states the obs
 | 3D | With only 0.1 % of edges rewired, a glider still circled the torus | [Topology rewiring](experiments/03-topology.md#puzzles) |
 | 3E | Damage spreads faster and higher on a small world | [Topology rewiring](experiments/03-topology.md#puzzles) |
 | 3F | On a random network, sparse soups die out and dense soups boil forever | [Topology rewiring](experiments/03-topology.md#puzzles) |
+| 2A | On the lattice, sparse soups survive below the random-network threshold, and the bigger the grid, the lower they survive | [Phase transition and criticality](experiments/02-criticality.md#puzzles) |
+| 2B | At starting density 0.9 every soup is dead within three generations | [Phase transition and criticality](experiments/02-criticality.md#puzzles) |
+| 2C | The median avalanche has size 1 | [Phase transition and criticality](experiments/02-criticality.md#puzzles) |
+| 2D | A 32 × 32 grid driven one cell at a time ran empty and never recovered | [Phase transition and criticality](experiments/02-criticality.md#puzzles) |
+| 2E | Tentative. The heavy tail of avalanche sizes stops growing with the grid: wide, but probably not critical | [Phase transition and criticality](experiments/02-criticality.md#puzzles) |

@@ -33,6 +33,21 @@ A finite system with a deterministic rule must revisit a state, and from then on
 - **Clustering** $C$: for each node, the fraction of pairs of its neighbours that are themselves connected, averaged over nodes; computed as $\mathrm{diag}(A^3)_i / (k_i(k_i-1))$.
 - **Mean path length** $\ell$: average number of hops between distinct connected nodes, from breadth-first search; estimated from 200 random sources on large networks.
 
+## Avalanches (`life.avalanches`)
+
+- **Open boundary:** after every step the outer two rows and columns are cleared, so gliders can leave ([ADR 0003](adr/0003-avalanche-definition.md)).
+- **Avalanche:** add one live cell to a settled grid; run the disturbed and an undisturbed copy side by side. **Size** = number of cells that differ at least once; **duration** = generations until the disturbed grid is back on a cycle.
+- **Driving:** each avalanche starts from the state the previous one settled into; the first 500 are discarded as warm-up; avalanches after the grid has become empty are excluded.
+
+## Power-law fits (`life.stats.fit_power_law`)
+
+Following Clauset, Shalizi and Newman (2009):
+
+- For each candidate lower cut-off $x_{\min}$ with at least 50 points above it, the exponent is estimated by maximum likelihood, $\hat\alpha = 1 + n \big/ \sum_i \ln\frac{x_i}{x_{\min} - 1/2}$, and the Kolmogorov–Smirnov distance between data and fitted discrete power law is computed. The $x_{\min}$ with the smallest distance is kept.
+- Standard error: $(\hat\alpha - 1)/\sqrt{n}$.
+- **Power law vs. exponential:** a discrete exponential (geometric) tail is fitted to the same points; the log-likelihood ratio $R$ is positive when the power law fits better, and Vuong's test gives a $p$-value for its sign. A small $p$ means the sign can be trusted.
+- **Finite-size check:** for a critical system the cut-off should move out with the system size; the 99th percentile and the largest avalanche are compared across grid sizes.
+
 ## Simple models used to explain results
 
 - **Slowest region:** the transient of a grid of area $kA$ is approximated by the maximum of $k$ transients drawn from grids of area $A$.

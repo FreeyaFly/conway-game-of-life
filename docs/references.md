@@ -10,3 +10,7 @@
 | Maslov, S., & Sneppen, K. (2002). Specificity and stability in topology of protein networks. *Science*, 296, 910–913. | Degree-preserving edge swaps ([ADR 0002](adr/0002-degree-preserving-rewiring.md)) |
 | Schulman, L. S., & Seiden, P. E. (1978). Statistical mechanics of a dynamical system based on Conway's game of Life. *Journal of Statistical Physics*, 19(3), 293–314. | Mean-field treatment of Life (experiment 3, puzzles B and F) |
 | Scheffer, M., et al. (2009). Early-warning signals for critical transitions. *Nature*, 461, 53–59. | Critical slowing down (experiment 3e) |
+| Bak, P., Tang, C., & Wiesenfeld, K. (1987). Self-organized criticality: An explanation of the 1/f noise. *Physical Review Letters*, 59, 381–384. | The sandpile model; self-organized criticality (experiment 2) |
+| Bak, P., Chen, K., & Creutz, M. (1989). Self-organized criticality in the 'Game of Life'. *Nature*, 342, 780–782. | The claim tested in experiment 2b |
+| Bennett, C., & Bourzutschky, M. S. (1991). 'Life' not critical? *Nature*, 350, 468. | The counter-claim that Life's avalanches have a finite scale (experiment 2b, puzzle E) |
+| Clauset, A., Shalizi, C. R., & Newman, M. E. J. (2009). Power-law distributions in empirical data. *SIAM Review*, 51(4), 661–703. | Fitting and testing power laws (`life.stats`) |

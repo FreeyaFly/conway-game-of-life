@@ -49,3 +49,19 @@ Close to a transition, a system takes longer and longer to settle, because it ho
 ## Bistability
 
 A system with two stable states and a tipping point between them: below the threshold it falls into one state, above it into the other. On a random network, Life dies out from starting densities below about 0.19 and boils from densities above it. *Experiment 3e, puzzle F.*
+
+## Power law
+
+A distribution in which the probability of an event of size $s$ falls like $s^{-\alpha}$. Small events are very common, large ones rare but never negligible, and there is no typical size. On log–log axes it is a straight line, but a straight-looking stretch is not proof: other distributions look straight over a limited range. *Experiment 2b.*
+
+## Self-organized criticality
+
+The idea, from the sandpile model of Bak, Tang and Wiesenfeld (1987), that a slowly driven system can tune itself to a critical point without anyone adjusting a parameter: add grains one at a time, and avalanches of all sizes follow a power law. Whether the Game of Life does this has been debated since 1989. *Experiment 2b.*
+
+## Finite-size effects
+
+Behaviour that depends on the size of the system rather than on the rule alone, such as the largest possible avalanche or the chance that a sparse soup survives somewhere. Comparing several sizes separates finite-size effects from genuine properties. *Experiment 2a, 2b.*
+
+## Absorbing state
+
+A state the system can enter but never leave. For Life with one cell added at a time, the empty grid is absorbing: a lone added cell dies at once. *Experiment 2b, puzzle D.*

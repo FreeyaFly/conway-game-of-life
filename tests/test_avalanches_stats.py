@@ -73,3 +73,20 @@ def test_fit_prefers_exponential_for_exponential_data():
 def test_fit_needs_enough_data():
     with pytest.raises(ValueError):
         fit_power_law(np.array([1, 2, 3]))
+
+
+def test_overcrowded_soup_dies_at_once():
+    # Experiment 2a: at density 0.9 almost no cell has the 2-3 neighbours needed to live.
+    from life.engine import run
+    from life.topology import Lattice
+
+    soup = np.random.default_rng(3).random((64, 64)) < 0.9
+    assert not run(soup, 3, topology=Lattice("torus"))[-1].any()
+
+
+def test_empty_grid_is_absorbing():
+    # Experiment 2b: one cell added to an empty grid dies, so the grid stays empty.
+    empty = np.zeros(SHAPE, dtype=bool)
+    for cell in [(4, 4), (6, 7), (9, 3)]:
+        result = avalanche(empty, cell, topology=OPEN, mask=MASK)
+        assert not result.state.any()
