@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/FreeyaFly/conway-game-of-life/actions/workflows/ci.yml/badge.svg)](https://github.com/FreeyaFly/conway-game-of-life/actions/workflows/ci.yml)
 
-> **Status:** v2 in progress. Experiments on attractors, topology and criticality are done; the systems view comes next.
+> **Status:** v2 in progress. All four experiments are done; the report comes next.
 
 How do **local rules** and the **interaction topology** together determine **global behaviour**?
 
@@ -53,7 +53,7 @@ python -m venv .venv
 
 ```
 life/        engine.py, rules.py, topology.py, patterns.py, metrics.py, networks.py,
-             avalanches.py, stats.py
+             avalanches.py, stats.py, rulespace.py
 notebooks/   one notebook per experiment
 data/        raw results behind the figures
 tests/       pytest suite; fixtures/ holds engine cases shared with the future web version
@@ -70,8 +70,8 @@ v1/          the original 2023 simulator, unchanged
 | 1 | **Attractors and chaos**: transient length, cycle period, damage spreading from a one-cell flip | ✅ done (`v2.0-alpha.1`) | [checklist](docs/stage1-checklist.md) · [write-up](docs/experiments/01-attractors.md) · [#2](https://github.com/FreeyaFly/conway-game-of-life/issues/2) |
 | 2 | **Topology rewiring**: lattice → small world → random graph. Life switches from freezing to boiling when about 20 % of edges are rewired | ✅ done (`v2.0-alpha.2`) | [checklist](docs/stage2-checklist.md) · [write-up](docs/experiments/03-topology.md) · [#3](https://github.com/FreeyaFly/conway-game-of-life/issues/3) |
 | 3 | **Phase transition and criticality**: initial-density sweep and avalanches. Extinction is a finite-size effect; avalanches have a heavy tail but are probably not critical | ✅ done (`v2.0-alpha.3`) | [checklist](docs/stage3-checklist.md) · [write-up](docs/experiments/02-criticality.md) · [#4](https://github.com/FreeyaFly/conway-game-of-life/issues/4) |
-| 4 | **Systems view**: causal loop diagrams and an automated scan of life-like rule space | next | [#5](https://github.com/FreeyaFly/conway-game-of-life/issues/5) |
-| 5 | **Report** tying the experiments together | planned | [#6](https://github.com/FreeyaFly/conway-game-of-life/issues/6) |
+| 4 | **Systems view**: causal loop diagrams and a scan of life-like rule space. Two thirds of rules are chaotic, about 3 % complex like Life | ✅ done (`v2.0-alpha.4`) | [checklist](docs/stage4-checklist.md) · [write-up](docs/experiments/04-systems.md) · [#5](https://github.com/FreeyaFly/conway-game-of-life/issues/5) |
+| 5 | **Report** tying the experiments together | next | [#6](https://github.com/FreeyaFly/conway-game-of-life/issues/6) |
 | 6 | **Web version** on GitHub Pages | planned | [#7](https://github.com/FreeyaFly/conway-game-of-life/issues/7) |
 
 Puzzles the data turned up along the way are collected in [docs/puzzles.md](docs/puzzles.md).

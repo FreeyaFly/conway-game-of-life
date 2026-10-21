@@ -1,5 +1,14 @@
 # Changelog
 
+## v2.0-alpha.4: experiment 4, a systems view
+
+### Added
+- `life.rulespace`: rule sampling, Langton's λ, one-digit neighbours, behavioural features and a transparent five-class classification
+- Notebook `04_systems`: 500 random rules, class mix along λ, birth vs. survival digits, threshold sensitivity, Life's 17 neighbours, a check on a larger grid
+- Write-up `docs/experiments/04-systems.md` with three causal loop diagrams and five puzzles; ADR 0004
+- Methods, concepts and references for feedback loops, Wolfram's classes and Langton's λ
+- Raw data in `data/exp04/`; figures
+
 ## v2.0-alpha.3: experiment 2, phase transition and criticality
 
 ### Added

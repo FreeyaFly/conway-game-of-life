@@ -61,3 +61,22 @@ def test_classify_thresholds():
     unsettled = {**base, "settled": 0.0, "transient": np.nan, "period": np.nan}
     assert classify_rule(RuleFeatures(**{**unsettled, "damage": 0.9})) == "chaotic"
     assert classify_rule(RuleFeatures(**{**unsettled, "damage": 0.1})) == "complex"
+
+
+def test_replicator_empties_a_32_torus_at_generation_16():
+    # Experiment 4, puzzle E: B1357/S1357 is a parity rule; 16 steps cancel every shift.
+    from life.engine import run
+    from life.topology import Lattice
+
+    rule = parse_rule("B1357/S1357")
+    for seed in range(3):
+        soup = np.random.default_rng(seed).random((32, 32)) < 0.35
+        history = run(soup, 16, rule, Lattice("torus"))
+        assert history[15].any()
+        assert not history[16].any()
+
+
+def test_low_birth_digits_make_life_chaotic():
+    # Experiment 4c: adding B1 to Life tips it into chaos; adding B8 does not.
+    assert classify_rule(rule_features(parse_rule("B13/S23"), runs=4)) == "chaotic"
+    assert classify_rule(rule_features(parse_rule("B38/S23"), runs=4)) == "complex"

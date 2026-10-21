@@ -48,6 +48,14 @@ Following Clauset, Shalizi and Newman (2009):
 - **Power law vs. exponential:** a discrete exponential (geometric) tail is fitted to the same points; the log-likelihood ratio $R$ is positive when the power law fits better, and Vuong's test gives a $p$-value for its sign. A small $p$ means the sign can be trusted.
 - **Finite-size check:** for a critical system the cut-off should move out with the system size; the 99th percentile and the largest avalanche are compared across grid sizes.
 
+## Rule space (`life.rulespace`)
+
+- **Sampling:** each of the 17 digits B1–B8, S0–S8 is included with probability 1/2 (B0 excluded), giving distinct rules drawn uniformly from $2^{17}$.
+- **Langton's $\lambda$:** $(\lvert B\rvert + \lvert S\rvert)/18$.
+- **Features** over 10 soups on a 32 × 32 torus (cap 2000): fraction settled, median transient and period, final density, final activity (fraction of cells changing per step), and damage after 200 steps relative to $2\rho(1-\rho)$ at that time, averaged over flips that did not heal.
+- **Classes:** dead / frozen / periodic / complex / chaotic by the rules in [ADR 0004](adr/0004-rule-classification.md); thresholds varied by ±50 % as a sensitivity check.
+- **Neighbours of a rule:** the 17 rules obtained by adding or removing one digit.
+
 ## Simple models used to explain results
 
 - **Slowest region:** the transient of a grid of area $kA$ is approximated by the maximum of $k$ transients drawn from grids of area $A$.

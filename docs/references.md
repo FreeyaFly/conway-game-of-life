@@ -14,3 +14,7 @@
 | Bak, P., Chen, K., & Creutz, M. (1989). Self-organized criticality in the 'Game of Life'. *Nature*, 342, 780–782. | The claim tested in experiment 2b |
 | Bennett, C., & Bourzutschky, M. S. (1991). 'Life' not critical? *Nature*, 350, 468. | The counter-claim that Life's avalanches have a finite scale (experiment 2b, puzzle E) |
 | Clauset, A., Shalizi, C. R., & Newman, M. E. J. (2009). Power-law distributions in empirical data. *SIAM Review*, 51(4), 661–703. | Fitting and testing power laws (`life.stats`) |
+| Wolfram, S. (1984). Universality and complexity in cellular automata. *Physica D*, 10(1–2), 1–35. | Classes of cellular-automaton behaviour (experiment 4b) |
+| Langton, C. G. (1990). Computation at the edge of chaos: Phase transitions and emergent computation. *Physica D*, 42(1–3), 12–37. | The $\lambda$ parameter and the edge of chaos (experiment 4b) |
+| Meadows, D. H. (2008). *Thinking in Systems: A Primer*. Chelsea Green. | Feedback loops and loop dominance (experiment 4a) |
+| Sterman, J. D. (2000). *Business Dynamics: Systems Thinking and Modeling for a Complex World*. McGraw-Hill. | Causal loop diagrams (experiment 4a) |

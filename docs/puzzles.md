@@ -23,3 +23,8 @@ Things the data did that were not obvious in advance. Each puzzle states the obs
 | 2C | The median avalanche has size 1 | [Phase transition and criticality](experiments/02-criticality.md#puzzles) |
 | 2D | A 32 × 32 grid driven one cell at a time ran empty and never recovered | [Phase transition and criticality](experiments/02-criticality.md#puzzles) |
 | 2E | Tentative. The heavy tail of avalanche sizes stops growing with the grid: wide, but probably not critical | [Phase transition and criticality](experiments/02-criticality.md#puzzles) |
+| 4A | Two thirds of random life-like rules are chaotic | [A systems view](experiments/04-systems.md#puzzles) |
+| 4B | Extra survival digits make chaos less likely, extra birth digits more likely | [A systems view](experiments/04-systems.md#puzzles) |
+| 4C | Some one-digit changes to Life change nothing, others make it chaotic | [A systems view](experiments/04-systems.md#puzzles) |
+| 4D | Partly open. Langton's λ does not find the complex rules | [A systems view](experiments/04-systems.md#puzzles) |
+| 4E | The Replicator rule empties a 32 × 32 torus at generation 16 from any start | [A systems view](experiments/04-systems.md#puzzles) |

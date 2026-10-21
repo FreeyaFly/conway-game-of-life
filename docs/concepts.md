@@ -65,3 +65,19 @@ Behaviour that depends on the size of the system rather than on the rule alone, 
 ## Absorbing state
 
 A state the system can enter but never leave. For Life with one cell added at a time, the empty grid is absorbing: a lone added cell dies at once. *Experiment 2b, puzzle D.*
+
+## Feedback loops
+
+A **reinforcing** loop amplifies change (more activity → more births → more activity); a **balancing** loop counteracts it (more activity → more still lifes → less activity). Drawn as a causal loop diagram, a loop with an even number of negative links is reinforcing, with an odd number balancing. *Experiment 4a.*
+
+## Shift in loop dominance
+
+Several loops act at once, and which one wins can change when a parameter changes. On the lattice the freezing loop wins; when rewiring halves the clustering, it weakens enough for the reinforcing loop to take over. *Experiments 3 and 4a.*
+
+## Wolfram's classes
+
+Wolfram (1984) sorted cellular automata into four classes by their long-run behaviour: (I) uniform, (II) simple stable or periodic structures, (III) chaos, (IV) complex localized structures with long transients. Life is the standard example of class IV. *Experiment 4b.*
+
+## Langton's λ and the edge of chaos
+
+Langton (1990) measured how much of a rule table produces live cells ($\lambda$) and proposed that complex behaviour sits at a transition between order and chaos as $\lambda$ grows. For life-like rules, experiment 4 found that $\lambda$ alone does not locate the complex rules. *Experiment 4b, puzzle D.*
