@@ -28,16 +28,21 @@ OUT = Path(__file__).resolve().parents[1] / "docs" / "figures" / "glider.gif"
 def main() -> None:
     history = run(place(GLIDER, (SIZE, SIZE), at=(1, 1)), STEPS, topology=Lattice("torus"))
 
-    fig, ax = plt.subplots(figsize=(3, 3), dpi=100)
+    fig, ax = plt.subplots(figsize=(3, 3.3), dpi=100)
     image = ax.imshow(history[0], cmap=ListedColormap(["#eef0f2", "#2f7d4f"]), vmin=0, vmax=1)
     ax.set_xticks([])
     ax.set_yticks([])
-    title = ax.set_title("")
+
+    def label(t: int) -> str:
+        return f"B3/S23 on a torus · t = {t}"
+
+    # Set the widest title before laying out, so the layout reserves room for it.
+    title = ax.set_title(label(STEPS), fontsize=10)
     fig.tight_layout()
 
     def update(t: int):
         image.set_data(history[t])
-        title.set_text(f"B3/S23 on a torus · t = {t}")
+        title.set_text(label(t))
         return image, title
 
     animation = FuncAnimation(fig, update, frames=len(history), blit=False)
