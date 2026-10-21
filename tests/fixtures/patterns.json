@@ -1,0 +1,54 @@
+{
+  "description": "Shared engine test cases. Cells are [row, col] pairs of live cells. Used by the Python tests and, later, by the web version.",
+  "cases": [
+    {
+      "name": "block is a still life",
+      "rule": "B3/S23", "boundary": "torus", "shape": [6, 6],
+      "initial": [[2, 2], [2, 3], [3, 2], [3, 3]],
+      "steps": 1,
+      "expected": [[2, 2], [2, 3], [3, 2], [3, 3]]
+    },
+    {
+      "name": "blinker turns vertical after one step",
+      "rule": "B3/S23", "boundary": "fixed", "shape": [5, 5],
+      "initial": [[2, 1], [2, 2], [2, 3]],
+      "steps": 1,
+      "expected": [[1, 2], [2, 2], [3, 2]]
+    },
+    {
+      "name": "blinker has period 2",
+      "rule": "B3/S23", "boundary": "fixed", "shape": [5, 5],
+      "initial": [[2, 1], [2, 2], [2, 3]],
+      "steps": 2,
+      "expected": [[2, 1], [2, 2], [2, 3]]
+    },
+    {
+      "name": "glider moves one cell diagonally every 4 steps",
+      "rule": "B3/S23", "boundary": "torus", "shape": [8, 8],
+      "initial": [[1, 2], [2, 3], [3, 1], [3, 2], [3, 3]],
+      "steps": 4,
+      "expected": [[2, 3], [3, 4], [4, 2], [4, 3], [4, 4]]
+    },
+    {
+      "name": "glider wraps around an 8 x 8 torus in 32 steps",
+      "rule": "B3/S23", "boundary": "torus", "shape": [8, 8],
+      "initial": [[1, 2], [2, 3], [3, 1], [3, 2], [3, 3]],
+      "steps": 32,
+      "expected": [[1, 2], [2, 3], [3, 1], [3, 2], [3, 3]]
+    },
+    {
+      "name": "single cell dies of isolation",
+      "rule": "B3/S23", "boundary": "torus", "shape": [3, 3],
+      "initial": [[1, 1]],
+      "steps": 1,
+      "expected": []
+    },
+    {
+      "name": "HighLife B36/S23 births on six neighbours",
+      "rule": "B36/S23", "boundary": "fixed", "shape": [3, 3],
+      "initial": [[0, 0], [0, 1], [0, 2], [2, 0], [2, 1], [2, 2]],
+      "steps": 1,
+      "expected": [[0, 1], [1, 1], [2, 1]]
+    }
+  ]
+}

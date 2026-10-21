@@ -5,7 +5,7 @@ from __future__ import annotations
 import numpy as np
 
 from life.rules import CONWAY, Rule
-from life.topology import Lattice
+from life.topology import Lattice, Topology
 
 DEFAULT_TOPOLOGY = Lattice("torus")
 
@@ -13,7 +13,7 @@ DEFAULT_TOPOLOGY = Lattice("torus")
 def step(
     state: np.ndarray,
     rule: Rule = CONWAY,
-    topology: Lattice = DEFAULT_TOPOLOGY,
+    topology: Topology = DEFAULT_TOPOLOGY,
 ) -> np.ndarray:
     """把整个系统同步推进一代。
 
@@ -25,7 +25,7 @@ def step(
 
     实验做法
         这是所有实验的唯一入口。换规则（如 B36/S23 HighLife）只改 ``rule``；
-        换交互结构（环面、固定边界，以后还有任意网络）只改 ``topology``。
+        换交互结构（环面、固定边界、任意网络 :class:`~life.topology.Graph`）只改 ``topology``。
         状态和规则不变、只换 topology，就能单独看"拓扑"对全局行为的影响。
 
     目的和意义
@@ -51,7 +51,7 @@ def run(
     state: np.ndarray,
     steps: int,
     rule: Rule = CONWAY,
-    topology: Lattice = DEFAULT_TOPOLOGY,
+    topology: Topology = DEFAULT_TOPOLOGY,
 ) -> np.ndarray:
     """Return the history as an array of shape ``(steps + 1, *state.shape)``.
 
