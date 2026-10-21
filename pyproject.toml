@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "conway-life"
+version = "2.0.0a0"
+description = "Life-like cellular automata on lattices and networks: an experiment platform"
+readme = "README.md"
+license = { file = "LICENSE" }
+authors = [{ name = "Ella" }]
+requires-python = ">=3.11"
+# Upper bounds keep the stack on releases that still support Python 3.11.
+dependencies = [
+    "numpy>=2.4,<3",
+    "scipy>=1.17,<2",
+    "matplotlib>=3.11,<4",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8",
+    "ruff>=0.6",
+]
+
+[tool.setuptools.packages.find]
+include = ["life*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+extend-exclude = ["v1"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "NPY"]
