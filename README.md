@@ -1,10 +1,14 @@
 # Conway's Game of Life — from simulator to experiments
 
-> **Status:** v2 in progress (stage 0: foundations).
+[![CI](https://github.com/FreeyaFly/conway-game-of-life/actions/workflows/ci.yml/badge.svg)](https://github.com/FreeyaFly/conway-game-of-life/actions/workflows/ci.yml)
+
+> **Status:** v2 in progress. Stage 0 (foundations) is done; the experiments come next.
 
 How do **local rules** and the **interaction topology** together determine **global behaviour**?
 
 This project started as a Tkinter simulator of Conway's Game of Life (v1, 2023). v2 rebuilds it as a small computational-experiment platform. One engine runs both square lattices and arbitrary networks, and four experiments probe attractors, topology, criticality, and rule space.
+
+<p align="center"><img src="docs/figures/glider.gif" alt="A glider crossing a 16 by 16 torus" width="240"></p>
 
 ## Growth line
 
@@ -12,6 +16,48 @@ This project started as a Tkinter simulator of Conway's Game of Life (v1, 2023).
 |---|---|
 | [v1](v1/) | Single-file Tkinter simulator (March 2023), tagged `v1.0` |
 | v2 | Vectorised engine + tests + four documented experiments + a web version *(in progress)* |
+
+## The engine in one line
+
+```
+next = f(state, A · state)
+```
+
+`A · state` is the number of live neighbours of every cell, and `f` is a life-like rule such as `B3/S23`. On a square lattice, `A · state` is computed by convolution; on any other network, by a sparse matrix product. A lattice is just one particular `A`, and the tests check that both paths agree cell by cell (see [ADR 0001](docs/adr/0001-unified-engine.md)).
+
+```python
+from life.engine import run
+from life.patterns import GLIDER, place
+from life.rules import parse_rule
+from life.topology import Graph, Lattice, lattice_adjacency
+
+state = place(GLIDER, (16, 16), at=(1, 1))
+history = run(state, 64, parse_rule("B3/S23"), Lattice("torus"))  # shape (65, 16, 16)
+
+# The same lattice, run as a network:
+same = run(state, 64, parse_rule("B3/S23"), Graph(lattice_adjacency((16, 16), "torus")))
+```
+
+## Getting started
+
+Requires Python 3.11.
+
+```
+python -m venv .venv
+.venv/bin/python -m pip install -e ".[dev]"        # Windows: .venv\Scripts\python.exe
+.venv/bin/python -m pytest -q
+.venv/bin/python scripts/make_glider_gif.py         # writes docs/figures/glider.gif
+```
+
+## Layout
+
+```
+life/        engine.py, rules.py, topology.py, patterns.py
+tests/       pytest suite; fixtures/ holds engine cases shared with the future web version
+scripts/     figure generation
+docs/        architecture decisions (adr/), stage checklists, figures
+v1/          the original 2023 simulator, unchanged
+```
 
 ## Planned experiments
 
