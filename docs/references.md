@@ -6,3 +6,7 @@
 | Strogatz, S. H. (2015). *Nonlinear Dynamics and Chaos* (2nd ed.). Westview Press. | Attractors, sensitivity to initial conditions (experiment 1) |
 | Bagnoli, F., Rechtman, R., & Ruffo, S. (1992). Damage spreading and Lyapunov exponents in cellular automata. *Physics Letters A*, 172(1–2), 34–38. | Damage spreading as the discrete counterpart of a Lyapunov exponent (experiment 1c) |
 | Newman, M. E. J. (2018). *Networks* (2nd ed.). Oxford University Press. | Adjacency matrices; lattices as networks ([ADR 0001](adr/0001-unified-engine.md)) |
+| Watts, D. J., & Strogatz, S. H. (1998). Collective dynamics of "small-world" networks. *Nature*, 393, 440–442. | Rewiring, clustering vs. path length (experiment 3) |
+| Maslov, S., & Sneppen, K. (2002). Specificity and stability in topology of protein networks. *Science*, 296, 910–913. | Degree-preserving edge swaps ([ADR 0002](adr/0002-degree-preserving-rewiring.md)) |
+| Schulman, L. S., & Seiden, P. E. (1978). Statistical mechanics of a dynamical system based on Conway's game of Life. *Journal of Statistical Physics*, 19(3), 293–314. | Mean-field treatment of Life (experiment 3, puzzles B and F) |
+| Scheffer, M., et al. (2009). Early-warning signals for critical transitions. *Nature*, 461, 53–59. | Critical slowing down (experiment 3e) |

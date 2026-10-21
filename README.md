@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/FreeyaFly/conway-game-of-life/actions/workflows/ci.yml/badge.svg)](https://github.com/FreeyaFly/conway-game-of-life/actions/workflows/ci.yml)
 
-> **Status:** v2 in progress. Experiment 1 (attractors and chaos) is done; experiment 2 (topology) comes next.
+> **Status:** v2 in progress. Experiments on attractors and on topology are done; criticality comes next.
 
 How do **local rules** and the **interaction topology** together determine **global behaviour**?
 
@@ -52,7 +52,7 @@ python -m venv .venv
 ## Layout
 
 ```
-life/        engine.py, rules.py, topology.py, patterns.py, metrics.py
+life/        engine.py, rules.py, topology.py, patterns.py, metrics.py, networks.py
 notebooks/   one notebook per experiment
 data/        raw results behind the figures
 tests/       pytest suite; fixtures/ holds engine cases shared with the future web version
@@ -67,8 +67,8 @@ v1/          the original 2023 simulator, unchanged
 |---|---|---|---|
 | 0 | **Foundations**: engine, tests, CI | ✅ done | [checklist](docs/stage0-checklist.md) · [#1](https://github.com/FreeyaFly/conway-game-of-life/issues/1) |
 | 1 | **Attractors and chaos**: transient length, cycle period, damage spreading from a one-cell flip | ✅ done (`v2.0-alpha.1`) | [checklist](docs/stage1-checklist.md) · [write-up](docs/experiments/01-attractors.md) · [#2](https://github.com/FreeyaFly/conway-game-of-life/issues/2) |
-| 2 | **Topology rewiring**: lattice → small world → random graph (Watts–Strogatz β sweep) | next | [#3](https://github.com/FreeyaFly/conway-game-of-life/issues/3) |
-| 3 | **Phase transition and criticality**: initial-density sweep and avalanche-size distributions | planned | [#4](https://github.com/FreeyaFly/conway-game-of-life/issues/4) |
+| 2 | **Topology rewiring**: lattice → small world → random graph. Life switches from freezing to boiling when about 20 % of edges are rewired | ✅ done (`v2.0-alpha.2`) | [checklist](docs/stage2-checklist.md) · [write-up](docs/experiments/03-topology.md) · [#3](https://github.com/FreeyaFly/conway-game-of-life/issues/3) |
+| 3 | **Phase transition and criticality**: initial-density sweep and avalanche-size distributions | next | [#4](https://github.com/FreeyaFly/conway-game-of-life/issues/4) |
 | 4 | **Systems view**: causal loop diagrams and an automated scan of life-like rule space | planned | [#5](https://github.com/FreeyaFly/conway-game-of-life/issues/5) |
 | 5 | **Report** tying the experiments together | planned | [#6](https://github.com/FreeyaFly/conway-game-of-life/issues/6) |
 | 6 | **Web version** on GitHub Pages | planned | [#7](https://github.com/FreeyaFly/conway-game-of-life/issues/7) |

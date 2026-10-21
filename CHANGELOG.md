@@ -1,5 +1,14 @@
 # Changelog
 
+## v2.0-alpha.2: experiment 3, topology rewiring
+
+### Added
+- `life.networks`: degree-preserving rewiring, classic Watts–Strogatz rewiring, clustering, mean path length
+- Notebook `03_topology`: structure, dynamics and damage spreading from lattice to small world to random network; a fine sweep that locates the freezing-to-boiling switch at β ≈ 0.2; a mean-field check
+- Write-up `docs/experiments/03-topology.md` with six puzzles; ADR 0002
+- Methods, concepts and references for networks, mean field, phase transitions and critical slowing down
+- Raw data in `data/exp03/`; figures and a side-by-side animation
+
 ## v2.0-alpha.1: experiment 1, attractors and chaos
 
 ### Added

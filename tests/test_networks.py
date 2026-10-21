@@ -2,6 +2,7 @@ import numpy as np
 import pytest
 from scipy import sparse
 
+from life.engine import run
 from life.networks import (
     clustering,
     edge_list,
@@ -10,7 +11,7 @@ from life.networks import (
     rewire,
     watts_strogatz,
 )
-from life.topology import lattice_adjacency
+from life.topology import Graph, lattice_adjacency
 
 LATTICE = lattice_adjacency((12, 12), "torus")
 
@@ -108,3 +109,21 @@ def test_mean_path_length_sampling_is_close():
     full = mean_path_length(LATTICE)
     sampled = mean_path_length(LATTICE, n_sources=40, rng=np.random.default_rng(7))
     assert sampled == pytest.approx(full, rel=0.05)
+
+
+def _random_regular_run(density, steps):
+    graph = Graph(rewire(lattice_adjacency((32, 32)), 1.0, np.random.default_rng(0)))
+    state = np.random.default_rng(1).random((32, 32)) < density
+    return run(state, steps, topology=graph)
+
+
+def test_life_keeps_boiling_on_a_random_regular_network():
+    # Experiment 3: dense soups never freeze; the density sits near the mean-field value 0.37.
+    history = _random_regular_run(0.35, 600)
+    assert 0.33 < history[-100:].mean() < 0.42
+    assert (history[-1] != history[-2]).mean() > 0.25
+
+
+def test_sparse_soups_die_out_on_a_random_regular_network():
+    # Below the unstable mean-field fixed point (about 0.19) activity dies out.
+    assert not _random_regular_run(0.1, 300)[-1].any()

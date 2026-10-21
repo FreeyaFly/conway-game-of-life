@@ -25,3 +25,27 @@ A system is sensitive to initial conditions when a tiny change at the start lead
 ## Decorrelation
 
 Two runs are fully decorrelated when knowing one tells you nothing about the other: they differ as much as two unrelated random grids would. For live density $\rho$ that is a fraction $2\rho(1-\rho)$ of cells. *Experiment 1c, puzzle G.*
+
+## Clustering and path length
+
+Two numbers that describe a network. **Clustering** asks how often two of your neighbours are also neighbours of each other (high on a lattice, where neighbours sit together). **Path length** asks how many steps it takes, on average, to get from one node to another (long on a lattice, short on a random network). *Experiment 3a.*
+
+## Small world
+
+A network with short paths *and* high clustering: locally tight-knit, yet everyone is a few steps from everyone else. Watts and Strogatz showed that rewiring a lattice only slightly is enough to get there, because a few shortcuts shrink distances long before they destroy local clusters. *Experiment 3a.*
+
+## Mean field
+
+An approximation that ignores who is next to whom and treats every cell as surrounded by an average environment. It fails on lattices, where neighbours are correlated, but works well on random networks, where they hardly are. *Experiment 3, puzzles B and F.*
+
+## Phase transition
+
+An abrupt change in the collective behaviour of a system when a parameter crosses a critical value, like water freezing at 0 °C. In experiment 3 the parameter is the rewired fraction $\beta$, and the two phases are *freezing* (activity dies into still lifes and blinkers) and *boiling* (activity never stops). *Experiment 3e.*
+
+## Critical slowing down
+
+Close to a transition, a system takes longer and longer to settle, because it hovers between its two possible fates. It is studied as an early-warning signal for sudden shifts in ecosystems, climate and markets. *Experiment 3e, puzzle C.*
+
+## Bistability
+
+A system with two stable states and a tipping point between them: below the threshold it falls into one state, above it into the other. On a random network, Life dies out from starting densities below about 0.19 and boils from densities above it. *Experiment 3e, puzzle F.*
