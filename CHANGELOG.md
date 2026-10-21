@@ -1,5 +1,14 @@
 # Changelog
 
+## v2.0-alpha.5: report and policy brief
+
+### Added
+- `docs/report.md` and `docs/report.zh.md`: the four experiments as one story, three cross-cutting lessons, a prediction scorecard
+- `docs/policy-brief.md` and `docs/policy-brief.zh.md`: four lessons, each from measured model results to real-world analogues (digital adoption and information spread; financial and supply-chain risk) with their limits
+
+### Changed
+- README links to the report and the brief
+
 ## v2.0-alpha.4: experiment 4, a systems view
 
 ### Added

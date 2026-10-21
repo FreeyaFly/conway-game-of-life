@@ -2,7 +2,9 @@
 
 [![CI](https://github.com/FreeyaFly/conway-game-of-life/actions/workflows/ci.yml/badge.svg)](https://github.com/FreeyaFly/conway-game-of-life/actions/workflows/ci.yml)
 
-> **Status:** v2 in progress. All four experiments are done; the report comes next.
+> **Status:** v2 in progress. All four experiments and the report are done; the web version comes next.
+>
+> **Read:** [Report](docs/report.md) ([中文](docs/report.zh.md)) · [Policy brief](docs/policy-brief.md) ([中文](docs/policy-brief.zh.md))
 
 How do **local rules** and the **interaction topology** together determine **global behaviour**?
 
@@ -71,8 +73,8 @@ v1/          the original 2023 simulator, unchanged
 | 2 | **Topology rewiring**: lattice → small world → random graph. Life switches from freezing to boiling when about 20 % of edges are rewired | ✅ done (`v2.0-alpha.2`) | [checklist](docs/stage2-checklist.md) · [write-up](docs/experiments/03-topology.md) · [#3](https://github.com/FreeyaFly/conway-game-of-life/issues/3) |
 | 3 | **Phase transition and criticality**: initial-density sweep and avalanches. Extinction is a finite-size effect; avalanches have a heavy tail but are probably not critical | ✅ done (`v2.0-alpha.3`) | [checklist](docs/stage3-checklist.md) · [write-up](docs/experiments/02-criticality.md) · [#4](https://github.com/FreeyaFly/conway-game-of-life/issues/4) |
 | 4 | **Systems view**: causal loop diagrams and a scan of life-like rule space. Two thirds of rules are chaotic, about 3 % complex like Life | ✅ done (`v2.0-alpha.4`) | [checklist](docs/stage4-checklist.md) · [write-up](docs/experiments/04-systems.md) · [#5](https://github.com/FreeyaFly/conway-game-of-life/issues/5) |
-| 5 | **Report** tying the experiments together | next | [#6](https://github.com/FreeyaFly/conway-game-of-life/issues/6) |
-| 6 | **Web version** on GitHub Pages | planned | [#7](https://github.com/FreeyaFly/conway-game-of-life/issues/7) |
+| 5 | **Report** tying the experiments together, and a policy brief, in English and Chinese | ✅ done (`v2.0-alpha.5`) | [checklist](docs/stage5-checklist.md) · [report](docs/report.md) · [brief](docs/policy-brief.md) · [#6](https://github.com/FreeyaFly/conway-game-of-life/issues/6) |
+| 6 | **Web version** on GitHub Pages | next | [#7](https://github.com/FreeyaFly/conway-game-of-life/issues/7) |
 
 Puzzles the data turned up along the way are collected in [docs/puzzles.md](docs/puzzles.md).
 
