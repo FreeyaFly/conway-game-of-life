@@ -3,7 +3,7 @@
 ## v2.0: web version
 
 ### Added
-- `web/`: an interactive browser version with no dependencies or build step, published at https://freeyafly.github.io/conway-game-of-life/
+- `web/`: an interactive browser version with no dependencies or build step, published at https://ellach123.github.io/conway-game-of-life/
   - rules in B/S notation with presets linked to the experiments; torus, fixed edge or rewired topology (degree-preserving, adjustable β)
   - live measurements: density, activity, exact cycle detection; curves, a space–time slice of one row, and a table of how often each rule entry is used
   - twin runs that flip one cell and show where the runs differ

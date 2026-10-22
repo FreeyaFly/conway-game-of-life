@@ -525,7 +525,7 @@ function applyLanguage() {
   document.documentElement.lang = language === "zh" ? "zh-CN" : "en";
   for (const el of document.querySelectorAll("[data-text]")) el.textContent = t(el.dataset.text);
   document.title = t("title");
-  const docs = "https://github.com/FreeyaFly/conway-game-of-life/blob/main/docs/";
+  const docs = "https://github.com/ellach123/conway-game-of-life/blob/main/docs/";
   const suffix = language === "zh" ? ".zh.md" : ".md";
   $("link-report").href = `${docs}report${suffix}`;
   $("link-brief").href = `${docs}policy-brief${suffix}`;

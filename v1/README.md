@@ -1,6 +1,6 @@
 # v1 — Tkinter simulator (March 2023)
 
-This folder keeps the original version of the project, a graduation project from March 2023. It is preserved unchanged so the step from v1 to v2 stays visible. The same state is also tagged as [`v1.0`](https://github.com/FreeyaFly/conway-game-of-life/tree/v1.0).
+This folder keeps the original version of the project, a graduation project from March 2023. It is preserved unchanged so the step from v1 to v2 stays visible. The same state is also tagged as [`v1.0`](https://github.com/ellach123/conway-game-of-life/tree/v1.0).
 
 ## What v1 is
 

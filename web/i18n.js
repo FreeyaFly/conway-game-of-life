@@ -1,5 +1,5 @@
 // Interface text in English and Chinese.
-const REPO = "https://github.com/FreeyaFly/conway-game-of-life/blob/main/docs/experiments/";
+const REPO = "https://github.com/ellach123/conway-game-of-life/blob/main/docs/experiments/";
 
 export const PRESETS = [
   {
