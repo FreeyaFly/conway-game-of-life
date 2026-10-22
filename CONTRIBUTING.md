@@ -15,7 +15,19 @@ ruff format --check .
 pytest -q
 ```
 
-CI runs the same three commands on Python 3.11.
+CI runs the same three commands on Python 3.11, and the JavaScript checks below on Node 24.
+
+## Web version
+
+```
+node --test "tests/js/*.test.mjs"
+python -m http.server 8790 --directory web
+```
+
+- Plain ES modules in `web/`: no framework, no bundler, no runtime dependencies ([ADR 0005](docs/adr/0005-web-version.md)).
+- `web/engine.js` mirrors the Python engine; any change to the update rule must keep `tests/fixtures/patterns.json` passing in both languages.
+- Interface text lives in `web/i18n.js` in English and Chinese; add every new string to both.
+- Colours come from CSS variables in `web/style.css` (Okabe–Ito palette, safe for colour-blind viewers), with a dark-mode variant for each.
 
 ## Code
 

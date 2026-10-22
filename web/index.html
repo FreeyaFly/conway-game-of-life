@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Play with Conway's Game of Life on lattices and rewired networks: rules, topology, live measurements and twin runs." />
+    <title>Game of Life lab</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div>
+        <h1 data-text="title">Game of Life lab</h1>
+        <p class="subtitle" data-text="subtitle">One local rule, many topologies.</p>
+        <p class="intro">
+          <span data-text="intro">An interactive companion to four experiments on how local rules and the wiring between cells shape global behaviour.</span>
+          <span class="links"><a id="link-report" href="https://github.com/FreeyaFly/conway-game-of-life/blob/main/docs/report.md" data-text="linkReport">Report</a> · <a id="link-brief" href="https://github.com/FreeyaFly/conway-game-of-life/blob/main/docs/policy-brief.md" data-text="linkBrief">Policy brief</a></span>
+        </p>
+      </div>
+      <button id="language" class="ghost" type="button">中文</button>
+    </header>
+
+    <main class="layout">
+      <section class="card board">
+        <canvas id="grid" aria-label="Game of Life grid"></canvas>
+        <div class="view-tools">
+          <div class="segmented" role="group" aria-label="Mouse mode">
+            <button id="mode-draw" type="button" aria-pressed="true" data-text="drawMode">Draw cells</button>
+            <button id="mode-pan" type="button" aria-pressed="false" data-text="panMode">Drag canvas</button>
+          </div>
+          <button id="fit" type="button" class="ghost" data-text="fit">Fit to view</button>
+          <p id="twin-legend" class="legend" hidden>
+            <span class="swatch alive"></span><span data-text="legendAlive">alive in both runs</span>
+            <span class="swatch damage"></span><span data-text="legendDamage">different between the runs</span>
+          </p>
+        </div>
+        <p class="hint" data-text="hint">Click or drag to toggle cells.</p>
+      </section>
+
+      <aside class="side">
+        <section class="card controls">
+          <div class="buttons">
+            <button id="play" type="button" data-text="play">Play</button>
+            <button id="step" type="button" data-text="step">Step</button>
+            <button id="random" type="button" data-text="random">Random soup</button>
+            <button id="clear" type="button" class="ghost" data-text="clear">Clear</button>
+          </div>
+          <label class="slider">
+            <span data-text="density">Density</span>
+            <input id="density" type="range" min="0.05" max="0.9" step="0.05" value="0.35" />
+            <output id="density-value">0.35</output>
+          </label>
+          <label class="slider">
+            <span data-text="speed">Speed</span>
+            <input id="speed" type="range" min="1" max="60" step="1" value="15" />
+            <output id="speed-value">15</output>
+            <span class="unit" data-text="perSecond">gen/s</span>
+          </label>
+        </section>
+
+        <section class="card measurements">
+          <h2 data-text="metricsTitle">Measurements</h2>
+          <dl class="metrics">
+            <div><dt data-text="generation">Generation</dt><dd id="generation">0</dd></div>
+            <div><dt data-text="liveDensity">Live density</dt><dd id="live">0</dd></div>
+            <div><dt data-text="activity">Changed last step</dt><dd id="activity">0</dd></div>
+            <div><dt data-text="cycle">Cycle</dt><dd id="cycle">–</dd></div>
+            <div class="twin-only wide" hidden><dt data-text="damage">Difference d(t)</dt><dd id="damage">0</dd></div>
+          </dl>
+
+          <div class="tabs" role="tablist">
+            <button type="button" role="tab" class="tab" data-tab="curves" aria-selected="true" data-text="tabCurves">Curves</button>
+            <button type="button" role="tab" class="tab" data-tab="spacetime" aria-selected="false" data-text="tabSpacetime">Space–time</button>
+            <button type="button" role="tab" class="tab" data-tab="usage" aria-selected="false" data-text="tabUsage">Rule usage</button>
+          </div>
+
+          <div class="tab-panel" data-panel="curves">
+            <canvas id="chart" class="chart" aria-label="Density, activity and difference over time"></canvas>
+            <p class="legend">
+              <span class="swatch alive"></span><span data-text="liveDensity">Live density</span>
+              <span class="swatch activity"></span><span data-text="activityShort">changed</span>
+              <span class="swatch damage"></span><span data-text="damageShort">difference</span>
+            </p>
+          </div>
+
+          <div class="tab-panel" data-panel="spacetime" hidden>
+            <canvas id="spacetime" class="spacetime" aria-label="One row of the grid over time"></canvas>
+            <label class="slider">
+              <span data-text="row">Row</span>
+              <input id="slice-row" type="range" min="0" max="95" step="1" value="48" />
+              <output id="slice-row-value">48</output>
+            </label>
+            <p class="note" data-text="spacetimeNote">One row of the grid, newest generation at the bottom.</p>
+          </div>
+
+          <div class="tab-panel" data-panel="usage" hidden>
+            <table id="usage" class="usage">
+              <thead>
+                <tr><th></th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th></tr>
+              </thead>
+              <tbody>
+                <tr id="usage-b"><th>B</th></tr>
+                <tr id="usage-s"><th>S</th></tr>
+              </tbody>
+            </table>
+            <p class="note" data-text="usageNote">How often each entry of the rule table was consulted.</p>
+          </div>
+        </section>
+      </aside>
+
+      <section class="settings">
+        <section class="card">
+          <h2 data-text="ruleTitle">Rule</h2>
+          <select id="preset" aria-label="Rule preset"></select>
+          <input id="rule" type="text" value="B3/S23" spellcheck="false" aria-label="Rule in B/S notation" />
+          <p id="rule-error" class="error" hidden data-text="ruleError">Use the form B3/S23 (digits 0–8).</p>
+          <p id="rule-note" class="note"></p>
+        </section>
+
+        <section class="card">
+          <h2 data-text="topologyTitle">Grid and topology</h2>
+          <form id="size-form" class="size">
+            <label><span data-text="width">Width</span> <input id="cols" type="number" min="8" max="512" value="96" /></label>
+            <span class="times">×</span>
+            <label><span data-text="height">Height</span> <input id="rows" type="number" min="8" max="512" value="96" /></label>
+            <button type="submit" class="ghost" data-text="apply">Apply</button>
+          </form>
+          <div class="radios" role="radiogroup">
+            <label><input type="radio" name="topology" value="torus" checked /> <span data-text="torus">Torus</span></label>
+            <label><input type="radio" name="topology" value="fixed" /> <span data-text="fixed">Fixed edge</span></label>
+            <label><input type="radio" name="topology" value="rewired" /> <span data-text="rewired">Rewired</span></label>
+          </div>
+          <label class="slider" id="beta-row" hidden>
+            <span>β</span>
+            <input id="beta" type="range" min="0" max="1" step="0.01" value="0.25" />
+            <output id="beta-value">0.25</output>
+          </label>
+          <p id="topology-note" class="note"></p>
+        </section>
+
+        <section class="card">
+          <h2 data-text="twinTitle">Twin run</h2>
+          <p class="note" data-text="twinNote">Copy the grid, flip one random cell in the copy, and run both.</p>
+          <button id="twin" type="button" class="ghost" data-text="twinStart">Flip one cell</button>
+        </section>
+      </section>
+    </main>
+
+    <footer>
+      <a href="https://github.com/FreeyaFly/conway-game-of-life" data-text="source">Source and experiments</a>
+    </footer>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

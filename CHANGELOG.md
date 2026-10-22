@@ -1,5 +1,17 @@
 # Changelog
 
+## v2.0: web version
+
+### Added
+- `web/`: an interactive browser version with no dependencies or build step, published at https://freeyafly.github.io/conway-game-of-life/
+  - rules in B/S notation with presets linked to the experiments; torus, fixed edge or rewired topology (degree-preserving, adjustable β)
+  - live measurements: density, activity, exact cycle detection; curves, a space–time slice of one row, and a table of how often each rule entry is used
+  - twin runs that flip one cell and show where the runs differ
+  - pan, zoom, adjustable grid size, faint grid lines when zoomed in; English and Chinese; colour-blind-safe palette; dark mode
+  - a starting state from the address (rule, size, topology, β, steps, twin run, tab, language)
+- `web/engine.js` with tests in `tests/js/` that run the shared fixtures; CI job for the JavaScript engine; GitHub Pages workflow
+- ADR 0005
+
 ## v2.0-alpha.5: report and policy brief
 
 ### Added

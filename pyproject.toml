@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "conway-life"
-version = "2.0.0a0"
+version = "2.0.0"
 description = "Life-like cellular automata on lattices and networks: an experiment platform"
 readme = "README.md"
 license = { file = "LICENSE" }
